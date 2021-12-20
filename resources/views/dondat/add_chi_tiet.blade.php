@@ -26,13 +26,18 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="ma_san_pham" id="ma_san_pham" class="form-control">
+                                        <select name="ma_san_pham" id="ma_san_pham" class="form-select @error('ma_san_pham') is-invalid @enderror">
                                         @foreach($sanphams as $sp)
-                                            <option id="{{$sp->id}}" value="{{$sp->id}}" class="vegitable custom-select">
+                                            <option id="{{$sp->id}}" value="{{$sp->id}}">
                                                 {{$sp->ten}}
                                             </option>
                                         @endforeach
                                         </select>
+                                        @error('ma_san_pham')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>Sản phẩm đã tồn tại</strong>
+                                            </span>
+                                        @enderror
                                     </td>
                                     <td>
                                         <input type="number" id="so_luong" name="so_luong" min="1" value="1" class="form-control @error('so_luong') is-invalid @enderror">
@@ -87,13 +92,13 @@
     <div class="col-md-12  mt-4" style="background-color:#f5f5f5;">
         <div class="p-4">
             <div class="text-center">
-                <h4>Chi tiet don dat {{$dondat->id}}</h4>
+                <h4>Cac san pham da chon </h4>
             </div>
         </div>
         <table id="" class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     {{-- <th>Don dat</th> --}}
                     <th>San pham</th>
                     <th>Gia</th>
@@ -104,10 +109,10 @@
             <tbody id="new">
                 @foreach ($chitiets as $chitiet)
                 <tr>
-                    <td>{{$chitiet->id}}</td>
+                    <!-- <td>{{$chitiet->id}}</td> -->
                     {{-- <td>{{$chitiet->ma_don_dat}}</td> --}}
                     <td>{{$chitiet->ten}}</td>
-                    <td>{{$chitiet->don_gia_ban}}</td>
+                    <td>{{$chitiet->don_gia_ban}} $</td>
                     <td>{{$chitiet->so_luong}}</td>
                     <td>
                         <form action="{{ route('dondat.delete_chi_tiet_don_dat', $chitiet->id) }}" method="POST" class="float-left">

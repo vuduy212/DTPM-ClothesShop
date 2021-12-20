@@ -40,7 +40,7 @@ Route::prefix('dondat')->name('dondat.')->group(function () {
     Route::get('/', [$class, 'index'])->name('index');
     Route::get('/create', [$class, 'create'])->name('create');
     Route::post('/', [$class, 'store'])->name('store');
-    //Route::get('/{dondat}', [$class, 'show'])->name('show');
+    Route::get('/{dondat}', [$class, 'show'])->name('show');
     Route::put('/{dondat}', [$class, 'update'])->name('update');
     Route::delete('/{dondat}', [$class, 'destroy'])->name('destroy');
     Route::get('/{dondat}/edit', [$class, 'edit'])->name('edit');

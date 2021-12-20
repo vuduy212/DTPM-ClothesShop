@@ -35,7 +35,7 @@
                     San pham
                 </a>
                 <a class="navbar-brand" href="{{ url('/dondat') }}">
-                    Don dat
+                    Đơn đặt hàng
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

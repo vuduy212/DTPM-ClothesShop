@@ -3,46 +3,92 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">Nhan su so {{$nhansu->id}}</div>
+                @if (session('success'))
+                <div class="alert alert-success">
+                    <p>{{ session('success') }}</p>
+                </div>
+                @endif
+                <div class="card-header"></div>
 
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="name" class="col-lg-3 col-form-label text-lg-right">Khach hang</label>
+                                <div class="col-lg-6">
+                                    <select name="ma_khach_hang" id="ma_khach_hang" class="form-control">
+                                        <option value="{{$dondat->ma_khach_hang}}" class="vegitable custom-select">
+                                        {{$dondat->ma_khach_hang}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                <label for="name" class="col-lg-3 col-form-label text-lg-right">Nhan vien</label>
+                                <div class="col-lg-6">
+                                <select name="ma_khach_hang" id="ma_khach_hang" class="form-control">
+                                        <option value="{{$dondat->ma_nhan_vien}}" class="vegitable custom-select">
+                                        {{$dondat->ma_nhan_vien}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <!-- <div class="form-group row">
+                                <label for="name" class="col-lg-3 col-form-label text-lg-right">Trang thai</label>
+                                <div class="col-lg-6">
+                                    <select name="trang_thai" class="form-control">
+                                        <option value="">{{$dondat->trang_thai}}</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="form-group row">
+                                <label for="name" class="col-lg-3 col-form-label text-lg-right">Thoi gian</label>
+                                <div class="col-lg-6">
+                                    <select name="trang_thai" class="form-control">
+                                        <option value="">{{$dondat->thoi_gian}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-12  mt-4" style="background-color:#f5f5f5;">
+                            <div class="p-4">
+                                <div class="text-center">
+                                    <h4>Cac san pham</h4>
+                                </div>
+                            </div>
+                            <table id="" class="table">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>ID</th> -->
+                                        {{-- <th>Don dat</th> --}}
+                                        <th>San pham</th>
+                                        <th>Gia</th>
+                                        <th>So luong</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="new">
+                                    @foreach ($chitiets as $chitiet)
+                                    <tr>
+                                        <!-- <td>{{$chitiet->id}}</td> -->
+                                        {{-- <td>{{$chitiet->ma_don_dat}}</td> --}}
+                                        <td>{{$chitiet->ten}}</td>
+                                        <td>{{$chitiet->don_gia_ban}} $</td>
+                                        <td>{{$chitiet->so_luong}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <h3>Tong tien: {{$dondat->tong_tien}} $</h3>
+                        </div>
+                        {{-- Jquery --}}
+                    </div>
 
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Ten</th>
-                            <th scope="col">Loai nhan su</th>
-                            <th scope="col">Ngay sinh</th>
-                            <th scope="col">Gioi tinh</th>
-                            <th scope="col">SDT</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Dan toc</th>
-                            <th scope="col">Que quan</th>
-                            <th scope="col">CMND</th>
-                            <th scope="col">Trinh do</th>
-                            <th scope="col">Mo ta</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{$nhansu->id}}</th>
-                                <td>{{$nhansu->ten_nhan_su}}</td>
-                                <td>{{$nhansu->loai_nhan_su}}</td>
-                                <td>{{$nhansu->ngay_sinh}}</td>
-                                <td>{{$nhansu->gioi_tinh}}</td>
-                                <td>{{$nhansu->SDT}}</td>
-                                <td>{{$nhansu->email}}</td>
-                                <td>{{$nhansu->dan_toc}}</td>
-                                <td>{{$nhansu->que_quan}}</td>
-                                <td>{{$nhansu->CMND}}</td>
-                                <td>{{$nhansu->trinh_do}}</td>
-                                <td>{{$nhansu->mo_ta}}</td>
-                            </tr>
-                        </tbody>
-                      </table>
                 </div>
             </div>
         </div>

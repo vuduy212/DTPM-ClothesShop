@@ -26,7 +26,7 @@ class DonDatSeeder extends Seeder
         DonDat::updateOrCreate([
             'ma_khach_hang' => '2',
             'ma_nhan_vien' => '2',
-            'tong_tien' => '0',
+            'tong_tien' => '250',
             'trang_thai' => 'Chua xac nhan',
             'thoi_gian' => Carbon::now()
         ]);

@@ -61,9 +61,21 @@ class DonDatController extends Controller
      * @param  \App\Models\DonDat  $donDat
      * @return \Illuminate\Http\Response
      */
-    public function show(DonDat $donDat)
+    public function show(DonDat $dondat)
     {
-        //
+        $khachhangs = User::where('loai_tai_khoan', 'khach_hang')->get();
+        $nhanviens = User::where('loai_tai_khoan', 'nhan_vien')->get();
+        $sanphams = SanPham::all();
+
+        $chitiets = DB::table('chi_tiet_don_dats')
+        ->join('don_dats', 'chi_tiet_don_dats.ma_don_dat', '=', 'don_dats.id')
+        ->join('san_phams', 'chi_tiet_don_dats.ma_san_pham', '=', 'san_phams.id')
+        ->where('chi_tiet_don_dats.ma_don_dat', '=', $dondat->id)
+        ->select('chi_tiet_don_dats.*', 'san_phams.ten', 'san_phams.don_gia_ban')
+        ->orderBy('id', 'DESC')
+        ->get();
+
+        return view('dondat.show', compact('dondat', 'sanphams', 'chitiets', 'khachhangs', 'nhanviens'));
     }
 
     /**
@@ -115,7 +127,7 @@ class DonDatController extends Controller
         $dondat->ma_khach_hang = $request->ma_khach_hang;
         $dondat->thoi_gian = $request->thoi_gian;
         $dondat->ma_nhan_vien = $request->ma_nhan_vien;
-        $dondat->trang_thai = $request->trang_thai;
+        // $dondat->trang_thai = $request->trang_thai;
         $dondat->thoi_gian = Carbon::now();
         $dondat->save();
 
@@ -137,6 +149,7 @@ class DonDatController extends Controller
     public function them_chi_tiet_don_dat(Request $request)
     {
         $this->validate($request, [
+            'ma_san_pham' => 'required|unique:chi_tiet_don_dats',
             'so_luong' => 'required|numeric',
         ]);
         DB::table('chi_tiet_don_dats')->insert([

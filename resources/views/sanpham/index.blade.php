@@ -47,7 +47,7 @@
                                 <td>{{$sp->don_gia_ban}}</td>
                                 {{-- <td>{{$sp->ma_san_pham_cha}}</td> --}}
                                 <td>
-                                    {{-- <a href="{{ route('sanpham.show', $sp->id) }}"><button type="button" class="btn btn-success">DETAIL</button></a> --}}
+                                    <a href=""><button type="button" class="btn btn-success">DETAIL</button></a>
                                     <a href="{{ route('sanpham.edit', $sp->id) }}"><button type="button" class="btn btn-warning">EDIT</button>
                                     <form action="{{ route('sanpham.destroy', $sp->id) }}" method="POST" class="float-left">
                                         @csrf

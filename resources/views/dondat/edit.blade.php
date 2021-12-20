@@ -10,7 +10,7 @@
                     <p>{{ session('success') }}</p>
                 </div>
                 @endif
-                <div class="card-header">Chinh sua don dat {{$dondat->id}}</div>
+                <div class="card-header"></div>
 
                 <div class="card-body">
                     <form action="{{ route('dondat.update', $dondat) }}" method="POST">
@@ -21,7 +21,7 @@
                                 <div class="form-group row">
                                     <label for="name" class="col-lg-3 col-form-label text-lg-right">Khach hang</label>
                                     <div class="col-lg-6">
-                                        <select name="ma_khach_hang" id="ma_khach_hang" class="form-control">
+                                        <select name="ma_khach_hang" id="ma_khach_hang" class="form-select">
                                             @foreach($khachhangs as $kh)
                                                 <option id="{{$kh->id}}" value="{{$kh->id}}" class="vegitable custom-select"
                                                 @if($dondat->ma_khach_hang == $kh->id) selected @endif>
@@ -31,11 +31,10 @@
                                         </select>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <label for="name" class="col-lg-3 col-form-label text-lg-right">Nhan vien</label>
                                     <div class="col-lg-6">
-                                        <select name="ma_nhan_vien" id="ma_nhan_vien" class="form-control">
+                                        <select name="ma_nhan_vien" id="ma_nhan_vien" class="form-select">
                                             @foreach($nhanviens as $nv)
                                                 <option id="{{$nv->id}}" value="{{$nv->id}}" class="vegitable custom-select">
                                                     {{$nv->name}}
@@ -43,25 +42,22 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="form-group row">
+                                </div> -->
+                                <!-- <div class="form-group row">
                                     <label for="name" class="col-lg-3 col-form-label text-lg-right">Trang thai</label>
                                     <div class="col-lg-6">
-                                        <select name="trang_thai" class="form-control">
+                                        <select name="trang_thai" class="form-select">
                                             <option value="Chua xac nhan" @if($dondat->trang_thai == 'Chua xac nhan') selected @endif>Chua xac nhan</option>
                                             <option value="Da xac nhan" @if($dondat->trang_thai == 'Da xac nhan') selected @endif>Da xac nhan</option>
                                             <option value="Da thanh toan" @if($dondat->trang_thai == 'Da thanh toan') selected @endif>Da thanh toan</option>
                                         </select>
                                     </div>
-                                </div>
-                                <br>
+                                </div> -->
                                 <button id="update" type="submit" class="btn btn-warning">
                                     Update
                                 </button>
                             </div>
                         </div>
-
                     </form>
                     @include('dondat.add_chi_tiet')
                 </div>
